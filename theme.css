@@ -1,0 +1,26 @@
+html {
+  font-size: 			11pt;
+  height: 				100%;
+  background-color:		rgb(235,255,235);
+  font-family:			"Verdana";
+}
+
+label, input, output {
+  display:			inline-block;
+  vertical-align:	middle;
+  float: 			none;
+}
+
+label {
+  width:	6em;
+}
+
+#img {
+  float: left;
+  margin: 1em;
+}
+
+code {
+	color:		red;
+	font-size:	0.9em;
+}

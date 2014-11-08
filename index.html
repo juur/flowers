@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+	<title>Sunflower</title>
+	<meta name="viewport" content="initial-scale=1.0">
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="theme.css">
+	<script src="jquery-2.1.1.min.js"></script>
+	<script src="game.js"></script>
+  </head>
+
+  <body style="height: 90%">
+	<img id="img" style="max-width: 20%;" 
+	src="Seed%20Germination.png" alt="Seed Germination"/>
+	<div id="div_mid" 
+	  style="max-height: 90%; overflow-y: scroll">
+	  <p id="body"></p>
+	</div>
+	<div id="div_bot">
+	  <form>
+		<div id="valign">
+		  <label for="btn_feed">Feed:</label>  
+		  <input id="btn_feed" type="checkbox" name="feed">
+		  <br/>
+		</div>
+
+		<label for="btn_water">Water&nbsp;(ml):</label>
+		<input id="btn_water" type="range" value="0" name="water" min="0"
+		max="1000" step="10">
+		<output for="water" id="waterlevel">0</output>
+
+		<br/>
+		<button type="button" id="btn_next">Next</button>
+	  </form>
+	</div>
+  </body>
+</html>
