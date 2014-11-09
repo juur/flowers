@@ -5,35 +5,34 @@
 	<meta name="viewport" content="initial-scale=1.0">
 	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="theme.css">
+	<meta name="description" content="Sunflower growing game">
+	<meta name="keywords" content="sunflower, science, growing, game">
 	<script src="jquery-2.1.1.min.js"></script>
 	<script src="game.js"></script>
   </head>
-
   <body style="height: 100%; margin: 0">
-	<span id="imgdiv" style="max-width: 20%; text-align: center">
-	  <img id="img" style="max-width: 100%" src="Seed%20Germination.png" alt="Seed Germination"/><br>
-	  <div id="rag">&nbsp;<b>Health</b>&nbsp; </div>
+	<span id="imgdiv">
+	  <img id="img" src="Seed%20Germination.png" alt="Seed Germination"/><br>
+	  <span id="rag">&nbsp;<b>Health</b>&nbsp; </span>
 	</span>
-	<div id="div_mid" 
-	  style="max-height: 100%; overflow-y: scroll">
+	<div id="div_mid">
 	  <p id="body"></p>
 	</div>
 	<div id="div_bot">
-	  <div style="margin-left: 1em; margin-bottom: 1em;">
+	  <div id="div_form">
 		<form>
-		  <div id="valign">
+		  <div class="valign">
 			<label for="btn_feed">Feed:</label>  
-			<input id="btn_feed" type="checkbox" name="feed">
+			<input accesskey="f" id="btn_feed" type="checkbox" name="feed">
 			<br/>
 		  </div>
-
-		  <label for="btn_water">Water&nbsp;(ml):</label>
-		  <input id="btn_water" type="range" value="0" name="water" min="0"
-		  max="1000" step="10">
-		  <output for="water" id="waterlevel">0</output>
-
+		  <div class="valign">
+			<label for="btn_water">Water&nbsp;(ml):</label>
+			<input accesskey="w" id="btn_water" type="range" value="0" name="water" min="0" max="1000" step="10">
+			<output for="water" id="waterlevel">0</output>
+		  </div>
 		  <br/>
-		  <button type="button" id="btn_next">Next</button>
+		  <input accesskey="n" type="button" id="btn_next" value="Next">
 		</form>
 	  </div>
 	  <div>&nbsp;</div>

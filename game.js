@@ -30,6 +30,8 @@ var Game = {};
 var Flower = {};
 var Soil = {};
 
+var body, html;
+
 $( document ).ready(function() {
 	body = $( "#body" );
 	html = $( "#html" );
@@ -247,7 +249,7 @@ function progress()
 
 	if(Flower.health <= 0) {
 		body.append(
-			"<p style=\"font-size: 2em; text-align: center\">"+
+			"<p style=\"font-size: 1.5em; text-align: center\">"+
 			"<b>Your flower is dead.</b></p>"
 		);
 		Flower.dead = true;
@@ -264,8 +266,10 @@ function progress()
 		}
 
 		if(Game.day >= MAX_AGE) {
-			body.append( "<b>Game over</b><br>");
-			body.append( "<b>Your sunflower was " + parseInt(height) + "cm tall!</b><br>");
+			body.append( 
+				"<b>Game over</b><br>" +
+				"<b>Your sunflower was " + parseInt(Flower.height) + "cm tall!</b><br>"
+			);
 			Flower.dead = true;
 		}
 	}
