@@ -1,14 +1,16 @@
 <div style="margin-left: 1em; margin-bottom: 1em">
-  <form>
+  <form id="submit_form" method="POST">
 	<label for="name">Name:</label>
-	<input id="_name" type="TEXT" name="name">
+	<input id="_name" type="TEXT" name="name" minlength="2" size="30" maxlength="100"
+	required placeholder="Your name, initials or nickname">
 	<br/>
 
 	<label for="email">Email:</label>
-	<input id="_email" type="EMAIL" name="email">
+	<input id="_email" type="EMAIL" name="email" minlength="8" size="30" maxlength="100"
+	placeholder="OPTIONAL: Your email address">
 	<br/>
 
-	<input id="submit" type="BUTTON" value="Submit">
+	<input id="submit" type="SUBMIT" value="Submit">
 	<br/>
   </form>
   <div>&nbsp</div>

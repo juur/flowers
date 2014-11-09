@@ -30,14 +30,6 @@ var Game = {};
 var Flower = {};
 var Soil = {};
 
-jQuery.fn.extend({
-	disable: function(state) {
-		return this.each(function() {
-			this.disabled = state;
-		});
-	}
-});
-
 $( document ).ready(function() {
 	body = $( "#body" );
 	html = $( "#html" );
@@ -280,7 +272,7 @@ function progress()
 
 	if(!Flower.dead) {
 		body.append(
-			(Game.aphid ? "<b>Aphid's are attacking!</b><br/>" : "") +
+			(Game.aphid ? "<b style=\"color: red\">Aphids have attacked!</b><br/>" : "") +
 			"Your sunflower is " + parseInt(Flower.height) + "cm tall.<br>" +
 			(Game.rain ? "It has rained. " : "") +
 			(Game.sunny ? "It is bright and sunny. " : "") +
@@ -308,19 +300,19 @@ function progress()
 	Flower.health = Math.min(MAX_HEALTH, Flower.health);
 
 	/*
-	body.append(
-		"<code>" +
-		"water=" + parseInt(Soil.water) + "ml" +
-		", health=" + parseInt(Flower.health) + "/" + MAX_HEALTH +
-		", rain=" + (Game.rain ? "" : RAIN_VOLUME +  "ml") +
-		", drainage=" + parseInt(soildrain) + "ml" +
-		", drunk=" + parseInt(plantdrain) + "ml" +
-		", nutrients=" + parseInt(Soil.nutrients) +
-		", food=" + parseInt(Soil.food) + "ml" +
-		", fcast=" + Game.fcast +
-		"</code>"
-	);
-	*/
+	 body.append(
+		 "<code>" +
+		 "water=" + parseInt(Soil.water) + "ml" +
+		 ", health=" + parseInt(Flower.health) + "/" + MAX_HEALTH +
+		 ", rain=" + (Game.rain ? "" : RAIN_VOLUME +  "ml") +
+		 ", drainage=" + parseInt(soildrain) + "ml" +
+		 ", drunk=" + parseInt(plantdrain) + "ml" +
+		 ", nutrients=" + parseInt(Soil.nutrients) +
+		 ", food=" + parseInt(Soil.food) + "ml" +
+		 ", fcast=" + Game.fcast +
+		 "</code>"
+	 );
+	 */
 
 	if( Flower.dead ) {
 		$( "#btn_next" ).click(null);
@@ -329,27 +321,33 @@ function progress()
 			'form.html', 
 			function() {
 				scroll();
-				$( "#submit" ).click(function () {
-					if(confirm("Do you wish to post your results?") != true) return;
-					$.ajax({
-						type: 'POST',
-						url: 'http://logomaze.herokuapp.com/events/44bpm/dashboard',
-						data: JSON.stringify({
-							name:		$("#_name").val(),
-							email:		$("#_email").val(),	
-							height:		parseInt(Flower.height),
-							birthdate:	Flower.startdate,
-							token:		parseInt(Flower.startdate/1000),
-							alive:		!Flower.dead 
-						}),
-						error: function(xhr) {
-							//alert("Unable to post");
-						},
-						success: function() {
-							$( "#div_bot" ).load( 'thanks.html' );
-						},
-						contentType: 'application/json'
-					});
+				$( "#submit_form" ).submit(function (event) {
+					$( "#submit" ).prop('disabled',true);
+					event.preventDefault();
+					if(confirm("Do you wish to post your results?") == true) {
+						$.ajax({
+							type: 'POST',
+							url: 'http://logomaze.herokuapp.com/events/44bpm/dashboard',
+							data: JSON.stringify({
+								name:		$("#_name").val(),
+								email:		$("#_email").val(),	
+								height:		parseInt(Flower.height),
+								birthdate:	Flower.startdate,
+								token:		parseInt(Flower.startdate/1000),
+								alive:		!Flower.dead 
+							}),
+							error: function(xhr) {
+							},
+							success: function() {
+								$( "#div_bot" ).load( 'thanks.html' );
+							},
+							contentType: 'application/json'
+						});
+					}
+
+					$( "#submit" ).prop('disabled',false);
+
+					return false;
 				});
 			}
 		);
