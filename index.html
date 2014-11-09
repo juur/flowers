@@ -9,29 +9,34 @@
 	<script src="game.js"></script>
   </head>
 
-  <body style="height: 90%">
-	<img id="img" style="max-width: 20%;" 
-	src="Seed%20Germination.png" alt="Seed Germination"/>
+  <body style="height: 100%; margin: 0">
+	<span id="imgdiv" style="max-width: 20%; text-align: center">
+	  <img id="img" src="Seed%20Germination.png" alt="Seed Germination"/><br>
+	  <div id="rag">&nbsp;<b>Health</b>&nbsp; </div>
+	</span>
 	<div id="div_mid" 
-	  style="max-height: 90%; overflow-y: scroll">
+	  style="max-height: 100%; overflow-y: scroll">
 	  <p id="body"></p>
 	</div>
 	<div id="div_bot">
-	  <form>
-		<div id="valign">
-		  <label for="btn_feed">Feed:</label>  
-		  <input id="btn_feed" type="checkbox" name="feed">
+	  <div style="margin-left: 1em; margin-bottom: 1em;">
+		<form>
+		  <div id="valign">
+			<label for="btn_feed">Feed:</label>  
+			<input id="btn_feed" type="checkbox" name="feed">
+			<br/>
+		  </div>
+
+		  <label for="btn_water">Water&nbsp;(ml):</label>
+		  <input id="btn_water" type="range" value="0" name="water" min="0"
+		  max="1000" step="10">
+		  <output for="water" id="waterlevel">0</output>
+
 		  <br/>
-		</div>
-
-		<label for="btn_water">Water&nbsp;(ml):</label>
-		<input id="btn_water" type="range" value="0" name="water" min="0"
-		max="1000" step="10">
-		<output for="water" id="waterlevel">0</output>
-
-		<br/>
-		<button type="button" id="btn_next">Next</button>
-	  </form>
+		  <button type="button" id="btn_next">Next</button>
+		</form>
+	  </div>
+	  <div>&nbsp;</div>
 	</div>
   </body>
 </html>

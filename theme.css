@@ -15,12 +15,21 @@ label {
   width:	6em;
 }
 
-#img {
+#imgdiv {
   float: left;
   margin: 1em;
+}
+
+#rag {
+	width: 100%; 
+	background-color: red
 }
 
 code {
 	color:		red;
 	font-size:	0.9em;
+}
+
+h3 {
+	margin:	1em 0em 0em;
 }
