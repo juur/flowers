@@ -331,15 +331,16 @@ function progress()
 					if(confirm("Do you wish to post your results?") == true) {
 						$.ajax({
 							type: 'POST',
-							url: 'http://logomaze.herokuapp.com/events/44bpm/dashboard',
-							data: JSON.stringify({
+							crossDomain: true,
+							url: 'http://plantlife.herokuapp.com/events/74afz/plants',
+							data: JSON.stringify({plant: {
 								name:		$("#_name").val(),
 								email:		$("#_email").val(),	
 								height:		parseInt(Flower.height),
-								birthdate:	Flower.startdate,
-								token:		parseInt(Flower.startdate/1000),
+								startdate_unix:	parseInt(Flower.startdate/1000),
+								token:		Flower.startdate.toString(),
 								alive:		!Flower.dead 
-							}),
+							}}),
 							error: function(xhr) {
 							},
 							success: function() {
